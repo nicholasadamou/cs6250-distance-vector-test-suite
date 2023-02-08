@@ -1,5 +1,7 @@
 # CS6250 Distance Vector Test Suite
 
+*Tests your Bellman Ford algorithm against the official solutions provided by the CS6250 TAs*
+
 ## What does it do?
 
 It will parse the solution for the selected topology you've chosen. It will sort each distance vector within the solution alphabetically so that we have a common base to compare to later. Then, it will then execute run.sh against your topology. From here, it will obtain the final round from your execution and perform the same sorting as mentioned previously. Next, it will compare both the solution and your test and acknowledge if your test passed or failed. Finally, it will clean up any log files the test suite generated.
