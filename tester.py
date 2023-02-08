@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-DEBUG = True
+DEBUG = False
 
 TOPOLOGIES = ",".join(
     file[:-4] if file.endswith(".log") else '' for file in os.listdir("solutions")
@@ -84,7 +84,11 @@ def execute_tests(topologies):
 
         # Execute run.sh with topology file name
 
-        process = subprocess.Popen(["./run.sh", topology], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen(
+            ["./run.sh", topology],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
 
         # Wait until process is finished
 
