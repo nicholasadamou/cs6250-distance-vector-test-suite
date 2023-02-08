@@ -86,8 +86,6 @@ def execute_tests(topologies):
 
         process = subprocess.Popen(
             ["./run.sh", topology],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
         )
 
         # Wait until process is finished
