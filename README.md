@@ -49,6 +49,57 @@ $ python3 tester.py SimpleTopo
 ```
 
 ```bash
+# With DEBUG mode enabled
+$ python3 tester.py SimpleTopo
+[*] Selected topologies: ['SimpleTopo']
+
+Parsing Solution for Topology: SimpleTopo
+
+node: A
+distance vector: A0,B1,C3,D3
+*sorted* distance vector: ['A0', 'B1', 'C3', 'D3']
+node: B
+distance vector: A1,B0,C2,D2
+*sorted* distance vector: ['A1', 'B0', 'C2', 'D2']
+node: C
+distance vector: A3,B2,C0,D0
+*sorted* distance vector: ['A3', 'B2', 'C0', 'D0']
+node: D
+distance vector: A3,B2,C0,D0
+*sorted* distance vector: ['A3', 'B2', 'C0', 'D0']
+node: E
+distance vector: A2,B1,C-1,D-1,E0
+*sorted* distance vector: ['A2', 'B1', 'C-1', 'D-1', 'E0']
+
+Solution
+--------
+A:A0,B1,C3,D3
+B:A1,B0,C2,D2
+C:A3,B2,C0,D0
+D:A3,B2,C0,D0
+E:A2,B1,C-1,D-1,E0
+
+--------
+
+Executing Test on Topology: SimpleTopo
+
+Number of rounds: 3
+
+Final round
+-----------
+A:A0,B1,C3,D3
+B:A1,B0,C2,D2
+C:A3,B2,C0,D0
+D:A3,B2,C0,D0
+E:A2,B1,C-1,D-1,E0
+
+-----------
+[✓] Test passed for topology SimpleTopo
+
+[!] Deleted output file: SimpleTopo.log
+```
+
+```bash
 $ python3 tester.py
 [!] Topology file not specified.
 [*] Defaulting to ALL ['SingleLoopTopo', 'ComplexTopo', 'SimpleNegativeCycleTopo', 'SimpleTopo'].
