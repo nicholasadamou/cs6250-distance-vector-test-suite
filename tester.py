@@ -8,6 +8,26 @@ TOPOLOGIES = ",".join(
     file[:-4] if file.endswith(".log") else '' for file in os.listdir("solutions")
 ).split(",")
 
+def sort(line):
+    components = line.split(":")
+
+    node = components[0].strip()
+
+    if DEBUG:
+        print("node: {}".format(node))
+
+    distance_vector = components[1].strip()
+
+    if DEBUG:
+        print("distance vector: {}".format(distance_vector))
+
+    sorted_distance_vector = sorted(distance_vector.split(","))
+
+    if DEBUG:
+        print("*sorted* distance vector: {}".format(sorted_distance_vector))
+
+    return node + ":" + ",".join(sorted_distance_vector) + "\n"
+
 def clean_up(executed_tests):
     for topology in executed_tests:
         if not os.path.exists(topology + ".log"):
@@ -45,24 +65,7 @@ def parse_solutions(topologies):
         solution = ""
 
         for line in solution_file:
-            components = line.split(":")
-
-            node = components[0].strip()
-
-            if DEBUG:
-                print("node: {}".format(node))
-
-            distance_vector = components[1].strip()
-
-            if DEBUG:
-                print("distance vector: {}".format(distance_vector))
-
-            sorted_distance_vector = sorted(distance_vector.split(","))
-
-            if DEBUG:
-                print("*sorted* distance vector: {}".format(sorted_distance_vector))
-
-            solution += node + ":" + ",".join(sorted_distance_vector) + "\n"
+            solution += sort(line)
 
         if DEBUG:
             print()
@@ -116,24 +119,7 @@ def execute_tests(topologies):
             if test_dict.get(rounds) is None:
                 test_dict[rounds] = ""
 
-            components = line.split(":")
-
-            node = components[0].strip()
-
-            if DEBUG:
-                print("node: {}".format(node))
-
-            distance_vector = components[1].strip()
-
-            if DEBUG:
-                print("distance vector: {}".format(distance_vector))
-
-            sorted_distance_vector = sorted(distance_vector.split(","))
-
-            if DEBUG:
-                print("*sorted* distance vector: {}".format(sorted_distance_vector))
-
-            test_dict[rounds] += node + ":" + ",".join(sorted_distance_vector) + "\n"
+            test_dict[rounds] += sort(line)
 
         num_rounds = len(test_dict)
 
