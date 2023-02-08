@@ -116,7 +116,24 @@ def execute_tests(topologies):
             if test_dict.get(rounds) is None:
                 test_dict[rounds] = ""
 
-            test_dict[rounds] += line
+            components = line.split(":")
+
+            node = components[0].strip()
+
+            if DEBUG:
+                print("node: {}".format(node))
+
+            distance_vector = components[1].strip()
+
+            if DEBUG:
+                print("distance vector: {}".format(distance_vector))
+
+            sorted_distance_vector = sorted(distance_vector.split(","))
+
+            if DEBUG:
+                print("*sorted* distance vector: {}".format(sorted_distance_vector))
+
+            test_dict[rounds] += node + ":" + ",".join(sorted_distance_vector) + "\n"
 
         num_rounds = len(test_dict)
 
