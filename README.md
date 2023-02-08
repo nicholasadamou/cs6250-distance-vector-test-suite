@@ -33,6 +33,9 @@ From within the `test-suite` directory, run the following command:
 
 python3 tester.py SimpleTopo
 
+# If your topology has a file extension, it will strip it.
+# E.g., SimpleTopo.txt -> SimpleTopo
+
 # If no topology is specified it will default to use all topologies.
 # By 'all' I mean each topology provided in the solutions directory.
 # These solutions are the official solutions provided by the TAs for
