@@ -19,7 +19,9 @@ Yes, this test suite has a debug mode, simply change the boolean `DEBUG` to `Tru
 Clone this repository into your `DistanceVector` directory.
 
 ```bash
-git clone https://github.com/nicholasadamou/cs6250-distance-vector-test-suite test-suite
+git clone \
+ https://github.com/nicholasadamou/cs6250-distance-vector-test-suite \
+ test-suite
 ```
 
 ## How do I use it?
