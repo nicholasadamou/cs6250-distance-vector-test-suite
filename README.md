@@ -37,4 +37,24 @@ python3 tester.py SimpleTopo
 # By 'all' I mean each topology provided in the solutions directory.
 # These solutions are the official solutions provided by the TAs for
 # project 2.
+
+python3 tester.py
+```
+
+## Example Output
+
+```bash
+$ python3 tester.py SimpleTopo
+[✓] Test passed for topology SimpleTopo
+```
+
+```bash
+$ python3 tester.py
+[!] Topology file not specified.
+[*] Defaulting to ALL ['SingleLoopTopo', 'ComplexTopo', 'SimpleNegativeCycleTopo', 'SimpleTopo'].
+
+[✓] Test passed for topology SingleLoopTopo
+[X] Test failed for topology ComplexTopo
+[X] Test failed for topology SimpleNegativeCycleTopo
+[✓] Test passed for topology SimpleTopo
 ```

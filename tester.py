@@ -16,7 +16,7 @@ def clean_up(executed_tests):
         os.remove(topology + ".log")
 
         if DEBUG:
-            print("\nDeleted output file: {}".format(topology + ".log"))
+            print("\n[!] Deleted output file: {}".format(topology + ".log"))
 
 def compare_solutions(executed_tests, solutions):
     for topology in executed_tests:
@@ -25,11 +25,11 @@ def compare_solutions(executed_tests, solutions):
         solution = solutions[topology]
 
         if executed_test == solution:
-            print("Test passed for topology {}".format(topology))
+            print("[✓] Test passed for topology {}".format(topology))
 
             continue
 
-        print("Test failed for topology {}".format(topology))
+        print("[X] Test failed for topology {}".format(topology))
 
 def parse_solutions(topologies):
     parsed_solutions = dict()
@@ -96,7 +96,7 @@ def execute_tests(topologies):
         # Check if process exited with error
 
         if process.returncode != 0:
-            print("Error executing run.sh against topology {}".format(topology))
+            print("[X] Error executing run.sh against topology {}".format(topology))
 
             continue
 
@@ -140,8 +140,8 @@ def main(args):
     topologies = []
 
     if len(args) == 1:
-        print("Topology file not specified.")
-        print("Defaulting to ALL {}.".format(TOPOLOGIES))
+        print("[!] Topology file not specified.")
+        print("[*] Defaulting to ALL {}.".format(TOPOLOGIES))
         print()
 
         topologies = TOPOLOGIES
@@ -156,7 +156,7 @@ def main(args):
         topologies.append(topology)
 
     if DEBUG:
-        print("Selected topologies: {}".format(topologies))
+        print("[*] Selected topologies: {}".format(topologies))
 
     # Parse solutions
 
