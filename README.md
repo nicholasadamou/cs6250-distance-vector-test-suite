@@ -41,7 +41,7 @@ python3 tester.py SimpleTopo
 python3 tester.py
 ```
 
-## Example Output
+## Example output
 
 ```bash
 $ python3 tester.py SimpleTopo
