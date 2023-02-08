@@ -27,7 +27,7 @@ def compare_solutions(executed_tests, solutions):
         if executed_test == solution:
             print("Test passed for topology {}".format(topology))
 
-            return
+            continue
 
         print("Test failed for topology {}".format(topology))
 
@@ -86,11 +86,19 @@ def execute_tests(topologies):
 
         process = subprocess.Popen(
             ["./run.sh", topology],
+            stdout=subprocess.DEVNULL,
         )
 
         # Wait until process is finished
 
         process.wait()
+
+        # Check if process exited with error
+
+        if process.returncode != 0:
+            print("Error executing run.sh against topology {}".format(topology))
+
+            continue
 
         output_file = open(topology + ".log", "r")
 
@@ -133,7 +141,7 @@ def main(args):
 
     if len(args) == 1:
         print("Topology file not specified.")
-        print("Defaulting to ALL topologies.")
+        print("Defaulting to ALL {}.".format(TOPOLOGIES))
         print()
 
         topologies = TOPOLOGIES
