@@ -6,7 +6,7 @@ DEBUG = True
 
 TOPOLOGIES = ",".join(
     file[:-4] if file.endswith(".log") else '' for file in os.listdir("solutions")
-    ).split(",")
+).split(",")
 
 def clean_up(executed_tests):
     for topology in executed_tests:
