@@ -8,13 +8,13 @@ It will parse the solution for the selected topology you've chosen. It will sort
 
 ## How were the solutions sourced?
 
-The solutions were sourced from the *Part 5: Correct Logs for Provided Topologies* section of the project 2 official write up. These solutions are the official solutions provided by the TAs for project 2.
+The solutions were sourced from the *Part 5: Correct Logs for Provided Topologies* section of the project 2 official write-up. These solutions are the official solutions provided by the TAs for project 2.
 
 ## Debug mode?
 
-Yes, this test suite has a debug mode, simply change the boolean `DEBUG` to `True` to allow debug messages to appear in your console.
+Yes, this test suite has a debug mode; change the boolean `DEBUG` to `True` to allow debug messages to appear in your console.
 
-## How to download it?
+## How do I download it?
 
 Clone this repository into your `DistanceVector` directory.
 
