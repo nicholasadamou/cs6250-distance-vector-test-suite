@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-DEBUG = True
+DEBUG = False
 
 TOPOLOGIES = ",".join(
     file[:-4] if file.endswith(".log") else '' for file in os.listdir("solutions")
