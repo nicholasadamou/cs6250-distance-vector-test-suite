@@ -46,15 +46,12 @@ python3 tester.py
 
 ### What if I am on Windows?
 
-Followed the steps [here](https://code.visualstudio.com/docs/remote/wsl) to download WSL and add the WSL extension to VS Code (default Ubuntu distribution worked).
+1. Followed the steps [here](https://code.visualstudio.com/docs/remote/wsl) to download WSL and add the WSL extension to VS Code (default Ubuntu distribution worked).
+1. Open a WSL terminal from VS Code.
+2. Run the git clone command from above in the WSL terminal. 
+3. Following the steps from above to run `tester.py`.
 
-Open a WSL terminal from VS Code.
-
-Run the git clone command from above in the WSL terminal. 
-
-Following the steps from above to run tester.py.
-
-NOTE: Cloning the repo from a normal Windows terminal (bash, powershell, cmd) resulted in the tester.py not being able to find ./run.sh for some reason. Likely because of line endings
+**NOTE**: Cloning the repo from a normal Windows terminal (bash, powershell, cmd) resulted in the `tester.py` not being able to find `./run.sh` for some reason. Likely because of line endings.
 
 To get this test suite working on the VM make sure run `chmod 777` so that you have permission to run `./run.sh`.
 
