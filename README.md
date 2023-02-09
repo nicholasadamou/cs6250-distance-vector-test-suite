@@ -44,6 +44,22 @@ python3 tester.py SimpleTopo
 python3 tester.py
 ```
 
+### What if I am on Windows?
+
+Followed the steps [here](https://code.visualstudio.com/docs/remote/wsl) to download WSL and add the WSL extension to VS Code (default Ubuntu distribution worked).
+
+Open a WSL terminal from VS Code.
+
+Run the git clone command from above in the WSL terminal. 
+
+Following the steps from above to run tester.py.
+
+NOTE: Cloning the repo from a normal Windows terminal (bash, powershell, cmd) resulted in the tester.py not being able to find ./run.sh for some reason. Likely because of line endings
+
+To get this test suite working on the VM make sure run `chmod 777` so that you have permission to run `./run.sh`.
+
+These instructions were provided by: *David Eduardo Rodriguez*. 
+
 ## Example output
 
 ```bash
