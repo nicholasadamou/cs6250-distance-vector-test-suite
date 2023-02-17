@@ -14,29 +14,29 @@ def sort(line):
     node = components[0].strip()
 
     if DEBUG:
-        print("node: {}".format(node))
+        print(f"node: {node}")
 
     distance_vector = components[1].strip()
 
     if DEBUG:
-        print("distance vector: {}".format(distance_vector))
+        print(f"distance vector: {distance_vector}")
 
     sorted_distance_vector = sorted(distance_vector.split(","))
 
     if DEBUG:
-        print("*sorted* distance vector: {}".format(sorted_distance_vector))
+        print(f"*sorted* distance vector: {sorted_distance_vector}")
 
-    return node + ":" + ",".join(sorted_distance_vector) + "\n"
+    return f"{node}:" + ",".join(sorted_distance_vector) + "\n"
 
 def clean_up(executed_tests):
     for topology in executed_tests:
-        if not os.path.exists(topology + ".log"):
+        if not os.path.exists(f"{topology}.log"):
             continue
 
-        os.remove(topology + ".log")
+        os.remove(f"{topology}.log")
 
         if DEBUG:
-            print("\n[!] Deleted output file: {}".format(topology + ".log"))
+            print(f"\n[!] Deleted output file: {topology}.log")
 
 def compare_solutions(executed_tests, solutions):
     for topology in executed_tests:
@@ -45,33 +45,29 @@ def compare_solutions(executed_tests, solutions):
         solution = solutions[topology]
 
         if executed_test == solution:
-            print("[✓] Test passed for topology {}".format(topology))
+            print(f"[✓] Test passed for topology {topology}")
 
             continue
 
-        print("[X] Test failed for topology {}".format(topology))
+        print(f"[X] Test failed for topology {topology}")
 
 def parse_solutions(topologies):
-    parsed_solutions = dict()
+    parsed_solutions = {}
 
     for topology in topologies:
         if DEBUG:
-            print("\nParsing Solution for Topology: {}\n".format(topology))
+            print(f"\nParsing Solution for Topology: {topology}\n")
 
         # Read the corresponding solution file from solutions/{topology}.log
 
-        solution_file = open("solutions/" + topology + ".log", "r")
+        solution_file = open(f"solutions/{topology}.log", "r")
 
-        solution = ""
-
-        for line in solution_file:
-            solution += sort(line)
-
+        solution = "".join(sort(line) for line in solution_file)
         if DEBUG:
             print()
             print("Solution")
             print("--------")
-            print("{}".format(solution))
+            print(f"{solution}")
             print("--------")
 
         parsed_solutions[topology] = solution
@@ -79,11 +75,11 @@ def parse_solutions(topologies):
     return parsed_solutions
 
 def execute_tests(topologies):
-    executed_tests = dict()
+    executed_tests = {}
 
     for topology in topologies:
         if DEBUG:
-            print("\nExecuting Test on Topology: {}\n".format(topology))
+            print(f"\nExecuting Test on Topology: {topology}\n")
 
         # Execute run.sh with topology file name
 
@@ -99,13 +95,13 @@ def execute_tests(topologies):
         # Check if process exited with error
 
         if process.returncode != 0:
-            print("[X] Error executing run.sh against topology {}".format(topology))
+            print(f"[X] Error executing run.sh against topology {topology}")
 
             continue
 
-        output_file = open(topology + ".log", "r")
+        output_file = open(f"{topology}.log", "r")
 
-        test_dict = dict()
+        test_dict = {}
         rounds = 1
 
         # Read output file line by line
@@ -124,7 +120,7 @@ def execute_tests(topologies):
         num_rounds = len(test_dict)
 
         if DEBUG:
-            print("Number of rounds: {}".format(num_rounds))
+            print(f"Number of rounds: {num_rounds}")
 
         final_round = test_dict[num_rounds]
 
@@ -132,7 +128,7 @@ def execute_tests(topologies):
             print()
             print("Final round")
             print("-----------")
-            print("{}".format(final_round))
+            print(f"{final_round}")
             print("-----------")
 
         executed_tests[topology] = final_round
@@ -144,7 +140,7 @@ def main(args):
 
     if len(args) == 1:
         print("[!] Topology file not specified.")
-        print("[*] Defaulting to ALL {}.".format(TOPOLOGIES))
+        print(f"[*] Defaulting to ALL {TOPOLOGIES}.")
         print()
 
         topologies = TOPOLOGIES
@@ -159,7 +155,7 @@ def main(args):
         topologies.append(topology)
 
     if DEBUG:
-        print("[*] Selected topologies: {}".format(topologies))
+        print(f"[*] Selected topologies: {topologies}")
 
     # Parse solutions
 
